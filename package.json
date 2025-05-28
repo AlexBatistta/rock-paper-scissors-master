@@ -1,0 +1,14 @@
+{
+  "name": "rock-paper-scissors-master",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
