@@ -30,6 +30,7 @@ body {
     var(--background-grad-2)
   );
   min-height: 100vh;
+  overflow: hidden;
 }
 
 .container {
@@ -185,10 +186,39 @@ body {
 }
 
 .attribution {
-  font-size: 11px;
+  font-size: 0.75rem;
   text-align: center;
+  color: #ffffff50;
 }
 
 .attribution a {
-  color: hsl(228, 45% 44%);
+  color: hsl(228, 45%, 44%);
+}
+
+footer {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+}
+
+.rules-btn {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  border: 2px solid var(--header-outline);
+  border-radius: 10px;
+  background: none;
+  width: 128px;
+  height: 40px;
+  color: var(--light-text);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  text-transform: inherit;
+}
+
+.rules-btn:focus {
+  border: 2px solid #fff;
 }
