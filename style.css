@@ -40,6 +40,7 @@ body {
   padding-top: 2rem;
 }
 
+/* Header - Title Score - */
 .header {
   display: flex;
   border: 3px solid var(--header-outline);
@@ -78,6 +79,7 @@ body {
   font-weight: 700;
 }
 
+/* Game Container */
 .game {
   position: relative;
   display: grid;
@@ -101,6 +103,7 @@ body {
   z-index: -1;
 }
 
+/* Choice Buttons */
 .choice-btn {
   border: none;
   outline: none;
@@ -185,22 +188,7 @@ body {
   grid-area: rock;
 }
 
-.attribution {
-  font-size: 0.75rem;
-  text-align: center;
-  color: #ffffff50;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
-footer {
-  position: absolute;
-  bottom: 2rem;
-  width: 100%;
-}
-
+/* Rules Button */
 .rules-btn {
   position: absolute;
   bottom: 2rem;
@@ -221,4 +209,69 @@ footer {
 
 .rules-btn:focus {
   border: 2px solid #fff;
+}
+
+/* Modal Rules */
+.modal {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal-container {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+}
+
+.modal-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.modal-heading {
+  font-size: 1.5rem;
+  color: var(--dark-text);
+}
+
+.close-btn {
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.rules-image {
+  padding-top: 2rem;
+}
+
+.show-modal {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+/* Footer */
+.attribution {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #ffffff50;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+footer {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
 }
