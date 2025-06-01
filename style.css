@@ -83,7 +83,7 @@ body {
 }
 
 /* Game Container */
-.game {
+.game-container {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -95,7 +95,7 @@ body {
   gap: 2rem 5rem;
 }
 
-.game::before {
+.game-container::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -143,6 +143,27 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
+}
+
+.choice.paper::before {
+  background-image: url('./assets/images/icon-paper.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65px;
+}
+
+.choice.scissors::before {
+  background-image: url('./assets/images/icon-scissors.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65px;
+}
+
+.choice.rock::before {
+  background-image: url('./assets/images/icon-rock.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 65px;
 }
 
 .choice img {
@@ -212,45 +233,45 @@ body {
   border: 2px solid #fff;
 }
 
-.results {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  place-items: center;
-  grid-template-areas:
-    'you-title ai-title'
-    'you-picked ai-picked';
-  max-width: 1000px;
+/* Results Container*/
+.results-container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  width: 900px;
   margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.results-heading {
+.side-result {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
+.result-heading {
   color: var(--light-text);
   font-size: 1.5rem;
   letter-spacing: 0.1em;
-  padding: 4rem 0 8rem;
+  height: auto;
 }
 
-.results-result {
-  min-width: 10rem;
-  min-height: 10rem;
+.result-img {
+  width: 10rem;
+  height: 10rem;
   background: #16213d;
   border-radius: 50%;
 }
 
-.results-heading:first-of-type {
-  grid-area: you-title;
+.hidden {
+  display: none;
 }
 
-.results-heading:last-of-type {
-  grid-area: ai-title;
-}
-
-.results-results:first-of-type {
-  grid-area: you-picked;
-}
-
-.results-results:last-of-type {
-  grid-area: ai-picked;
+.show {
+  opacity: 1;
 }
 
 /* Modal Rules */

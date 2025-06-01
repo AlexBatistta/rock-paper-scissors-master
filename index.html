@@ -21,22 +21,30 @@
           <h2 class="score-points">12</h2>
         </div>
       </header>
-      <section class="game">
+      <section class="game-container">
         <button class="choice-btn" data-choice="paper">
-          <div class="choice paper">
-            <img src="./assets/images/icon-paper.svg" alt="Paper" />
-          </div>
+          <div class="choice paper"></div>
         </button>
         <button class="choice-btn" data-choice="scissors">
-          <div class="choice scissors">
-            <img src="./assets/images/icon-scissors.svg" alt="Scissors" />
-          </div>
+          <div class="choice scissors"></div>
         </button>
         <button class="choice-btn" data-choice="rock">
-          <div class="choice rock">
-            <img src="./assets/images/icon-rock.svg" alt="Rock" />
-          </div>
+          <div class="choice rock"></div>
         </button>
+      </section>
+      <section class="results-container hidden">
+        <div class="side-result">
+          <h2 class="result-heading">you picked</h2>
+          <div class="choice rock"></div>
+        </div>
+        <div class="results-center">
+          <h1 class="results-title">you lose!</h1>
+          <button class="reset-btn"></button>
+        </div>
+        <div class="side-result">
+          <h2 class="result-heading">the house picked</h2>
+          <div class="result-img"></div>
+        </div>
       </section>
       <footer class="footer">
         <div class="attribution">
@@ -48,13 +56,6 @@
         </div>
       </footer>
     </div>
-
-    <!-- <section class="results">
-      <h2 class="results-heading">you picked</h2>
-      <h2 class="results-heading">the house picked</h2>
-      <div class="results-result"></div>
-      <div class="results-result"></div>
-    </section> -->
 
     <button class="rules-btn" tabindex="1">Rules</button>
     <div class="modal">
