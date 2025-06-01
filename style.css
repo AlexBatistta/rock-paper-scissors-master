@@ -110,6 +110,14 @@ body {
   outline: none;
   background: none;
   cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+}
+
+.choice-btn:hover,
+.choice-btn:focus {
+  transform: translateY(-8px);
+  box-shadow: 0 0 0 2rem #223351;
 }
 
 .choice {
@@ -135,17 +143,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-}
-
-.choice::after {
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.choice-btn:focus .choice::after {
-  opacity: 1;
-  box-shadow: 0 0 0 2rem #223351;
-  z-index: 0;
 }
 
 .choice img {
