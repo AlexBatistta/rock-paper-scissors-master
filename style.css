@@ -24,20 +24,21 @@
 
 body {
   font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.container {
   background: radial-gradient(
     at top,
     var(--background-grad-1),
     var(--background-grad-2)
   );
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.container {
+  height: 100vh;
+  width: 100vw;
   position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Header - Title Score - */
@@ -48,7 +49,9 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 150px;
+  width: 700px;
   padding: 1rem 1.4rem 1rem 2rem;
+  margin-top: 45px;
 }
 
 .logo img {
@@ -61,8 +64,8 @@ body {
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-radius: 10px;
-  height: 100%;
+  border-radius: 8px;
+  height: 114px;
   width: 150px;
   line-height: 1;
 }
@@ -88,8 +91,8 @@ body {
     'paper scissors'
     'rock rock';
   place-items: center;
-  height: 30rem;
-  padding-top: 4rem;
+  height: auto;
+  gap: 2rem 5rem;
 }
 
 .game::before {
@@ -97,10 +100,8 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 28%;
-  top: 35%;
-  background: url('./assets/images/bg-triangle.svg') no-repeat;
-  z-index: -1;
+  background: url('./assets/images/bg-triangle.svg') no-repeat center;
+  z-index: 0;
 }
 
 /* Choice Buttons */
@@ -113,25 +114,27 @@ body {
 
 .choice {
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  width: 205px;
+  height: 205px;
   background: white;
   border-radius: 50%;
   display: grid;
   place-items: center;
   box-shadow: inset 0 0.5rem hsla(0, 0%, 0%, 0.15);
+  z-index: 0;
 }
 
-.choice::before,
-.choice::after {
+.choice::before {
   content: '';
   position: absolute;
-  left: -15%;
-  top: -15%;
-  width: 130%;
-  height: 130%;
+  width: 152px;
+  height: 152px;
+  background: white;
   border-radius: 50%;
-  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .choice::after {
@@ -142,14 +145,15 @@ body {
 .choice-btn:focus .choice::after {
   opacity: 1;
   box-shadow: 0 0 0 2rem #223351;
-  z-index: -2;
+  z-index: 0;
 }
 
 .choice img {
   transform: scale(1.5);
+  z-index: 2;
 }
 
-.choice.paper::before {
+.choice.paper {
   background: linear-gradient(
     to bottom,
     var(--paper-grad-1),
@@ -158,7 +162,7 @@ body {
   box-shadow: 0 0.5rem rgba(0, 0, 0, 0.3), 0 0.5rem var(--paper-grad-2);
 }
 
-.choice.scissors::before {
+.choice.scissors {
   background: linear-gradient(
     to bottom,
     var(--scissors-grad-1),
@@ -167,7 +171,7 @@ body {
   box-shadow: 0 0.5rem rgba(0, 0, 0, 0.3), 0 0.5rem var(--scissors-grad-2);
 }
 
-.choice.rock::before {
+.choice.rock {
   background: linear-gradient(
     to bottom,
     var(--rock-grad-1),
@@ -209,6 +213,47 @@ body {
 
 .rules-btn:focus {
   border: 2px solid #fff;
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  grid-template-areas:
+    'you-title ai-title'
+    'you-picked ai-picked';
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.results-heading {
+  color: var(--light-text);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  padding: 4rem 0 8rem;
+}
+
+.results-result {
+  min-width: 10rem;
+  min-height: 10rem;
+  background: #16213d;
+  border-radius: 50%;
+}
+
+.results-heading:first-of-type {
+  grid-area: you-title;
+}
+
+.results-heading:last-of-type {
+  grid-area: ai-title;
+}
+
+.results-results:first-of-type {
+  grid-area: you-picked;
+}
+
+.results-results:last-of-type {
+  grid-area: ai-picked;
 }
 
 /* Modal Rules */
@@ -271,7 +316,6 @@ body {
 }
 
 footer {
-  position: absolute;
-  bottom: 2rem;
   width: 100%;
+  margin-bottom: 25px;
 }
