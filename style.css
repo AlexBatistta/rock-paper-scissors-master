@@ -344,6 +344,7 @@ body {
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  z-index: 10;
 }
 
 .modal-container {
@@ -393,4 +394,86 @@ body {
 footer {
   width: 100%;
   margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    width: 90%;
+    height: 100px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  .score-container {
+    height: 72px;
+    width: 80px;
+  }
+
+  .score-title {
+    font-size: 0.6rem;
+  }
+
+  .score-points {
+    font-size: 2.25rem;
+  }
+
+  .choice {
+    width: 130px;
+    height: 130px;
+  }
+
+  .choice::before {
+    width: 100px;
+    height: 100px;
+  }
+
+  .choice.paper::before {
+    background-size: 50px;
+  }
+
+  .choice.scissors::before {
+    background-size: 50px;
+  }
+
+  .choice.rock::before {
+    background-size: 50px;
+  }
+
+  .game-container {
+    gap: 1rem 3rem;
+  }
+  .game-container::before {
+    background-size: 70%;
+  }
+
+  .rules-btn {
+    right: 50vw;
+    bottom: 3.5rem;
+    translate: 50%;
+  }
+
+  .modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    padding: 2rem;
+  }
+
+  .close-btn {
+    position: absolute;
+    bottom: 3rem;
+    left: 50vw;
+    translate: -50%;
+  }
 }
