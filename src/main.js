@@ -31,6 +31,11 @@ const gameDiv = document.querySelector('.game-container');
 const resultsDiv = document.querySelector('.results-container');
 const userDiv = document.getElementById('user-result');
 const aiDiv = document.getElementById('ai-result');
+const score = document.querySelector('.score-points');
+const resultContainer = document.querySelector('.result-game');
+const restartBtn = document.querySelector('.reset-btn');
+
+restartBtn.addEventListener('click', () => restart());
 
 document.querySelectorAll('.choice-btn').forEach((btn) => {
   btn.addEventListener('click', () => userChoose(btn));
@@ -58,23 +63,25 @@ const displayResults = (results) => {
   void resultsDiv.offsetWidth;
   resultsDiv.classList.add('show');
 
-  setTimeout(() => {
-    userDiv.classList.remove('result-placeholder');
-    userDiv.classList.add('choice');
-    userDiv.style.scale = '125%';
-    userDiv.classList.add(`${results[0].name}`);
+  setTimeout(() => revealUserChoice(results), 500);
+};
 
-    setTimeout(() => {
-      aiDiv.classList.remove('result-placeholder');
-      aiDiv.classList.add('choice');
-      aiDiv.style.scale = '125%';
-      aiDiv.classList.add(`${results[1].name}`);
+const revealUserChoice = (results) => {
+  userDiv.classList.remove('result-placeholder');
+  userDiv.classList.add('choice');
+  userDiv.style.scale = '125%';
+  userDiv.classList.add(`${results[0].name}`);
 
-      setTimeout(() => {
-        checkWin(results);
-      }, 500);
-    }, 500);
-  }, 500);
+  setTimeout(() => revealAiChoice(results), 500);
+};
+
+const revealAiChoice = (results) => {
+  aiDiv.classList.remove('result-placeholder');
+  aiDiv.classList.add('choice');
+  aiDiv.style.scale = '125%';
+  aiDiv.classList.add(`${results[1].name}`);
+
+  setTimeout(() => checkWin(results), 500);
 };
 
 const checkWin = (results) => {
@@ -84,6 +91,7 @@ const checkWin = (results) => {
   } else if (results[0].beats === results[1].name) {
     titleText = 'You Win';
     userDiv.classList.add('winner');
+    score.innerText = `${Number(score.innerText) + 10}`;
   } else {
     titleText = 'You Lose';
     aiDiv.classList.add('winner');
@@ -91,8 +99,19 @@ const checkWin = (results) => {
   const title = document.getElementById('title-result');
   title.innerText = titleText;
 
-  const resultContainer = document.querySelector('.result-game');
   resultContainer.classList.remove('hidden');
   void resultContainer.offsetWidth;
   resultContainer.classList.add('show');
+};
+
+const restart = () => {
+  console.log('RESTART');
+
+  gameDiv.classList.remove('hidden');
+  resultsDiv.classList.add('hidden');
+
+  userDiv.classList = 'result-placeholder';
+  aiDiv.classList = 'result-placeholder';
+
+  resultContainer.classList.replace('show', 'hidden');
 };

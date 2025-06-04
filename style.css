@@ -264,7 +264,7 @@ body {
 .result-content {
   display: flex;
   flex-direction: column;
-  justify-items: start;
+  justify-content: start;
   align-items: center;
   max-width: 350px;
   height: 350px;
@@ -276,6 +276,7 @@ body {
   justify-content: center;
   align-items: center;
   max-width: 350px;
+  gap: 1rem;
 }
 
 .result-heading {
@@ -292,6 +293,8 @@ body {
   height: 10rem;
   background: #16213d;
   border-radius: 50%;
+  transform: scale(1.25);
+  margin-top: 1.3rem;
 }
 
 .results-title {
