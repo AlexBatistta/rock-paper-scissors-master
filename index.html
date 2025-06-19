@@ -13,6 +13,7 @@
     <title>Frontend Mentor | Rock, Paper, Scissors</title>
   </head>
   <body>
+    <div class="page-fade"></div>
     <div class="container">
       <header class="header">
         <img src="./assets/images/logo.svg" alt="Logo" class="logo" />
@@ -33,7 +34,8 @@
         </button>
       </section>
       <section class="results-container hidden">
-        <div class="result-content">
+        <div class="winner-effect-global" id="winner-effect-global"></div>
+        <div class="result-content" data-content="user">
           <h2 class="result-heading">you picked</h2>
           <div class="result-placeholder" id="user-result"></div>
         </div>
@@ -41,7 +43,7 @@
           <h1 class="results-title" id="title-result">you lose</h1>
           <button class="reset-btn">play again</button>
         </div>
-        <div class="result-content">
+        <div class="result-content" data-content="ai">
           <h2 class="result-heading">the house picked</h2>
           <div class="result-placeholder" id="ai-result"></div>
         </div>
@@ -60,17 +62,15 @@
     <button class="rules-btn" tabindex="1">Rules</button>
     <div class="modal">
       <div class="modal-container">
-        <header class="modal-header">
-          <h2 class="modal-heading">rules</h2>
-          <button class="close-btn">
-            <img src="./assets/images/icon-close.svg" alt="Close Button" />
-          </button>
-        </header>
+        <h2 class="modal-title">rules</h2>
         <img
           src="./assets/images/image-rules.svg"
           alt="Rules Image"
           class="rules-image"
         />
+        <button class="close-btn">
+          <img src="./assets/images/icon-close.svg" alt="Close Button" />
+        </button>
       </div>
     </div>
 

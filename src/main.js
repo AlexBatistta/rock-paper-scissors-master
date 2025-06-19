@@ -34,6 +34,7 @@ const aiDiv = document.getElementById('ai-result');
 const score = document.querySelector('.score-points');
 const resultContainer = document.querySelector('.result-game');
 const restartBtn = document.querySelector('.reset-btn');
+const winnerEffectGlobal = document.getElementById('winner-effect-global');
 
 restartBtn.addEventListener('click', () => restart());
 
@@ -69,7 +70,6 @@ const displayResults = (results) => {
 const revealUserChoice = (results) => {
   userDiv.classList.remove('result-placeholder');
   userDiv.classList.add('choice');
-  userDiv.style.scale = '125%';
   userDiv.classList.add(`${results[0].name}`);
 
   setTimeout(() => revealAiChoice(results), 500);
@@ -78,7 +78,6 @@ const revealUserChoice = (results) => {
 const revealAiChoice = (results) => {
   aiDiv.classList.remove('result-placeholder');
   aiDiv.classList.add('choice');
-  aiDiv.style.scale = '125%';
   aiDiv.classList.add(`${results[1].name}`);
 
   setTimeout(() => checkWin(results), 500);
@@ -86,18 +85,37 @@ const revealAiChoice = (results) => {
 
 const checkWin = (results) => {
   let titleText = '';
+  winnerEffectGlobal.classList.remove('active');
+  let winnerDiv = null;
   if (results[0].name === results[1].name) {
     titleText = "It's a tie!";
   } else if (results[0].beats === results[1].name) {
     titleText = 'You Win';
     userDiv.classList.add('winner');
     score.innerText = `${Number(score.innerText) + 10}`;
+    winnerDiv = userDiv;
   } else {
     titleText = 'You Lose';
     aiDiv.classList.add('winner');
+    winnerDiv = aiDiv;
   }
   const title = document.getElementById('title-result');
   title.innerText = titleText;
+
+  if (winnerDiv) {
+    const wrapper = winnerDiv.closest('.result-content');
+    const placeholder = winnerDiv;
+    const container = document.querySelector('.results-container');
+    const placeholderRect = placeholder.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    winnerEffectGlobal.style.top =
+      placeholderRect.top - containerRect.top + 'px';
+    winnerEffectGlobal.style.left =
+      placeholderRect.left - containerRect.left + 'px';
+    winnerEffectGlobal.classList.add('active');
+  } else {
+    winnerEffectGlobal.classList.remove('active');
+  }
 
   resultContainer.classList.remove('hidden');
   void resultContainer.offsetWidth;
@@ -105,7 +123,7 @@ const checkWin = (results) => {
 };
 
 const restart = () => {
-  console.log('RESTART');
+  winnerEffectGlobal.classList.remove('active');
 
   gameDiv.classList.remove('hidden');
   resultsDiv.classList.add('hidden');
@@ -115,3 +133,15 @@ const restart = () => {
 
   resultContainer.classList.replace('show', 'hidden');
 };
+
+window.addEventListener('DOMContentLoaded', () => {
+  const fade = document.querySelector('.page-fade');
+  if (fade) {
+    setTimeout(() => {
+      fade.classList.add('fade-out');
+      setTimeout(() => {
+        fade.style.display = 'none';
+      }, 800);
+    }, 100);
+  }
+});
