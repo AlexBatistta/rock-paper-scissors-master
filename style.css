@@ -492,3 +492,36 @@ footer {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Desktop styles */
+@media (min-width: 900px) {
+  .rules-btn {
+    right: 2rem;
+    left: unset;
+    transform: none;
+  }
+
+  .modal-container {
+    position: relative;
+    width: auto;
+    height: auto;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  .modal-title {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .rules-image {
+    margin-top: 2rem;
+  }
+}
