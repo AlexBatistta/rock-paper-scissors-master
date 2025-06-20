@@ -71,6 +71,7 @@ const revealUserChoice = (results) => {
   userDiv.classList.remove('result-placeholder');
   userDiv.classList.add('choice');
   userDiv.classList.add(`${results[0].name}`);
+  userDiv.classList.add('choice-result');
 
   setTimeout(() => revealAiChoice(results), 500);
 };
@@ -79,6 +80,7 @@ const revealAiChoice = (results) => {
   aiDiv.classList.remove('result-placeholder');
   aiDiv.classList.add('choice');
   aiDiv.classList.add(`${results[1].name}`);
+  aiDiv.classList.add('choice-result');
 
   setTimeout(() => checkWin(results), 500);
 };
@@ -103,7 +105,6 @@ const checkWin = (results) => {
   title.innerText = titleText;
 
   if (winnerDiv) {
-    const wrapper = winnerDiv.closest('.result-content');
     const placeholder = winnerDiv;
     const container = document.querySelector('.results-container');
     const placeholderRect = placeholder.getBoundingClientRect();
