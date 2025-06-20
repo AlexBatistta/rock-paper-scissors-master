@@ -128,7 +128,7 @@ body {
 .choice-btn:hover,
 .choice-btn:focus {
   transform: translateY(-8px);
-  box-shadow: 0 0 0 2rem #223351;
+  box-shadow: 0 0 0 1.5rem #2e43699e;
 }
 
 .choice {
@@ -545,5 +545,37 @@ footer {
 
   .score-points {
     font-size: 4rem;
+  }
+
+  .choice {
+    width: 200px;
+    height: 200px;
+  }
+
+  .choice::before {
+    width: 150px;
+    height: 150px;
+  }
+
+  .choice.paper::before {
+    background-size: 85px;
+  }
+
+  .choice.scissors::before {
+    background-size: 85px;
+  }
+
+  .choice.rock::before {
+    background-size: 85px;
+  }
+
+  .game-container {
+    row-gap: 1.5rem;
+    column-gap: 6rem;
+  }
+
+  .choice-btn:hover,
+  .choice-btn:focus {
+    box-shadow: 0 0 0 2rem #2e43699e;
   }
 }
