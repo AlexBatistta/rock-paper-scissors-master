@@ -34,7 +34,7 @@ const aiDiv = document.getElementById('ai-result');
 const score = document.querySelector('.score-points');
 const resultContainer = document.querySelector('.result-game');
 const restartBtn = document.querySelector('.reset-btn');
-const winnerEffectGlobal = document.getElementById('winner-effect-global');
+const winnerEffectGlobal = document.querySelector('.winner-effect-global');
 
 restartBtn.addEventListener('click', () => restart());
 
@@ -93,27 +93,33 @@ const checkWin = (results) => {
     titleText = "It's a tie!";
   } else if (results[0].beats === results[1].name) {
     titleText = 'You Win';
-    userDiv.classList.add('winner');
     score.innerText = `${Number(score.innerText) + 10}`;
     winnerDiv = userDiv;
   } else {
     titleText = 'You Lose';
-    aiDiv.classList.add('winner');
     winnerDiv = aiDiv;
   }
   const title = document.getElementById('title-result');
   title.innerText = titleText;
 
+  // Posicionar el efecto sobre el ganador
   if (winnerDiv) {
-    const placeholder = winnerDiv;
     const container = document.querySelector('.results-container');
-    const placeholderRect = placeholder.getBoundingClientRect();
+    const winnerRect = winnerDiv.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
-    winnerEffectGlobal.style.top =
-      placeholderRect.top - containerRect.top + 'px';
-    winnerEffectGlobal.style.left =
-      placeholderRect.left - containerRect.left + 'px';
+    winnerEffectGlobal.style.top = winnerRect.top - containerRect.top + 'px';
+
     winnerEffectGlobal.classList.add('active');
+
+    if (aiDiv === winnerDiv) {
+      winnerEffectGlobal.style.left =
+        winnerRect.left - containerRect.left + winnerRect.width / 2 + 'px';
+      winnerEffectGlobal.style.marginLeft = '1.5rem';
+    } else {
+      winnerEffectGlobal.style.left =
+        winnerRect.left - containerRect.left - winnerRect.width / 2 + 'px';
+      winnerEffectGlobal.style.marginLeft = '-1.5rem';
+    }
   } else {
     winnerEffectGlobal.classList.remove('active');
   }
