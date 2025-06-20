@@ -524,4 +524,26 @@ footer {
   .rules-image {
     margin-top: 2rem;
   }
+
+  .header {
+    width: 705px;
+    height: 155px;
+    border-radius: 16px;
+    padding-right: 1.1rem;
+    padding-left: 2rem;
+  }
+
+  .score-container {
+    width: 150px;
+    height: 110px;
+    border-radius: 8px;
+  }
+
+  .score-title {
+    font-size: 1.2rem;
+  }
+
+  .score-points {
+    font-size: 4rem;
+  }
 }
