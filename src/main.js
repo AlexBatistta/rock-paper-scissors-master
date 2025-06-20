@@ -94,35 +94,15 @@ const checkWin = (results) => {
   } else if (results[0].beats === results[1].name) {
     titleText = 'You Win';
     score.innerText = `${Number(score.innerText) + 10}`;
-    winnerDiv = userDiv;
+    userDiv.classList.add('winner-effect-global');
+    userDiv.classList.add('active');
   } else {
     titleText = 'You Lose';
-    winnerDiv = aiDiv;
+    aiDiv.classList.add('winner-effect-global');
+    aiDiv.classList.add('active');
   }
   const title = document.getElementById('title-result');
   title.innerText = titleText;
-
-  // Posicionar el efecto sobre el ganador
-  if (winnerDiv) {
-    const container = document.querySelector('.results-container');
-    const winnerRect = winnerDiv.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
-    winnerEffectGlobal.style.top = winnerRect.top - containerRect.top + 'px';
-
-    winnerEffectGlobal.classList.add('active');
-
-    if (aiDiv === winnerDiv) {
-      winnerEffectGlobal.style.left =
-        winnerRect.left - containerRect.left + winnerRect.width / 2 + 'px';
-      winnerEffectGlobal.style.marginLeft = '1.5rem';
-    } else {
-      winnerEffectGlobal.style.left =
-        winnerRect.left - containerRect.left - winnerRect.width / 2 + 'px';
-      winnerEffectGlobal.style.marginLeft = '-1.5rem';
-    }
-  } else {
-    winnerEffectGlobal.classList.remove('active');
-  }
 
   resultContainer.classList.remove('hidden');
   void resultContainer.offsetWidth;
